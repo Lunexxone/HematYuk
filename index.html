@@ -76,7 +76,7 @@ td.r{text-align:right}
 .sum .arr{font-size:20px}
 .up{color:#2fe0a8}.down{color:#ff6b6b}
 @media(max-width:380px){.num{font-size:28px}.two .num{font-size:22px}}
-
+ 
 /* ===== Responsif ===== */
 html{-webkit-text-size-adjust:100%}
 body{min-height:100vh;min-height:100dvh}
@@ -148,12 +148,12 @@ body{-webkit-tap-highlight-color:transparent}
 </head>
 <body class="auth">
 <div id="app">
-
+ 
 <div id="demoBar" class="demo" role="status" hidden>
  <b>Mode Demo</b> <span id="dTxt"></span>
  <div class="acts"><button class="btn" id="dUnduh">Unduh Aplikasi</button><button class="btn" id="dBuat">Buat Akun</button></div>
 </div>
-
+ 
 <!-- LOGIN -->
 <section id="login" class="screen on">
  <div class="authcard">
@@ -171,7 +171,7 @@ body{-webkit-tap-highlight-color:transparent}
   <button class="btn alt" id="bDemo">Coba Akun Demo</button>
  </div>
 </section>
-
+ 
 <!-- DAFTAR -->
 <section id="daftar" class="screen">
  <div class="authcard">
@@ -187,7 +187,7 @@ body{-webkit-tap-highlight-color:transparent}
   <p><button class="btn alt" id="bToLogin" style="background:none;box-shadow:none;color:#fff;font-weight:400">Kembali ke halaman masuk</button></p>
  </div>
 </section>
-
+ 
 <!-- HOME -->
 <section id="home" class="screen">
  <h1 class="logo" style="margin:20px 0 18px">HematYuk</h1>
@@ -210,7 +210,7 @@ body{-webkit-tap-highlight-color:transparent}
   <p style="text-align:center;margin:6px 0 0"><button class="btn alt" id="bPasang" hidden>Pasang Aplikasi</button></p>
  </div>
 </section>
-
+ 
 <!-- MAIN: Input / Statistik / Riwayat -->
 <section id="main" class="screen">
  <div class="top"><button class="btn" id="bBack" aria-label="Kembali">&lt;</button><h1 class="logo" style="margin:0">HematYuk</h1></div>
@@ -220,7 +220,7 @@ body{-webkit-tap-highlight-color:transparent}
    <button class="btn" data-go="stat">Statistik</button>
    <button class="btn" data-go="riw">Riwayat</button>
   </div>
-
+ 
   <!-- Input -->
   <div id="p-input" class="pane mid">
    <div class="row3">
@@ -245,7 +245,7 @@ body{-webkit-tap-highlight-color:transparent}
    <div id="im" class="msg" role="alert"></div>
    <button class="btn main" id="bSimpan">Simpan</button>
   </div>
-
+ 
   <!-- Statistik -->
   <div id="p-stat" class="pane">
    <label for="sBln" style="margin:0 0 4px 4px">Bulan</label>
@@ -271,7 +271,7 @@ body{-webkit-tap-highlight-color:transparent}
     <div class="box"><span class="arr down">↘</span><br>Pengeluaran<br><span class="rp" style="font-size:13px">Rp</span> <span id="sOut">0</span></div>
    </div>
   </div>
-
+ 
   <!-- Riwayat -->
   <div id="p-riw" class="pane">
    <label for="rBln" style="margin:0 0 4px 4px">Bulan</label>
@@ -291,7 +291,7 @@ body{-webkit-tap-highlight-color:transparent}
  </div>
 </section>
 </div>
-
+ 
 <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="mt" hidden>
  <div class="dialog"><h2 id="mt"></h2><p id="mp"></p>
   <div class="row2"><button class="btn opt" id="mNo">Batal</button><button class="btn" id="mYes" style="background:#c9293e;text-decoration:none">Hapus</button></div>
@@ -301,18 +301,18 @@ body{-webkit-tap-highlight-color:transparent}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
  <symbol id="ic-wallet" viewBox="0 0 64 64"><g fill="#000"><rect x="8" y="22" width="40" height="34" rx="5"/><path d="M20 20 28 6l22 6-4 8z" opacity=".9"/><rect x="42" y="32" width="16" height="12" rx="5"/></g><circle cx="49" cy="38" r="2.5" fill="#9aaaff"/><path d="M14 30h26" stroke="#9aaaff" stroke-width="2"/></symbol>
 </defs></svg>
-
+ 
 <script>
 // ===== KONFIGURASI =====
 const API_URL = 'https://script.google.com/macros/s/AKfycbzoXQRFY2JdivjPWz3dc0dmFFE-aTao9MYftxHlXVGLJe_MZc5qM58mOPALf5tVRZpC/exec';
 const TIMEOUT_MS = 10000; // waktu tunggu 10 detik
-
+ 
 const S = { nama:'', pass:'', rows:[], tipe:'Pemasukan', metode:'Cash', arah:'Cash', rtipe:'Pemasukan', demo:false, demoRows:[] };
 const $ = id => document.getElementById(id);
 const rp = n => new Intl.NumberFormat('id-ID').format(n);
 const pad = n => String(n).padStart(2,'0');
 const today = () => { const d=new Date(); return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; };
-
+ 
 async function api(action, extra){
   if(S.demo) return demoApi(action, extra||{});
   if(API_URL.startsWith('PASTE')) throw new Error('URL Apps Script belum diisi di index.html');
@@ -343,7 +343,7 @@ function show(id){
   document.body.classList.toggle('auth',id==='login'||id==='daftar');
 }
 async function busy(btn,fn){ const t=btn.textContent; btn.disabled=true; btn.textContent='Memproses...'; try{await fn();}finally{btn.disabled=false;btn.textContent=t;} }
-
+ 
 // ===== AUTH =====
 $('bToDaftar').onclick=()=>{err('lm');show('daftar')};
 $('bToLogin').onclick=()=>{err('dm');show('login')};
@@ -364,20 +364,20 @@ $('bSimpanAkun').onclick=e=>busy(e.target,async()=>{
   }catch(x){err('dm',x.message)}
 });
 $('bKeluar').onclick=()=>{localStorage.removeItem('hy');S.demo=false;S.rows=[];$('lp').value='';show('login')};
-
+ 
 async function enter(){
   const j=await api('list'); S.rows=j.rows;
   $('hNama').textContent=S.nama; renderHome(); show('home');
 }
 async function reload(){ const j=await api('list'); S.rows=j.rows; }
-
+ 
 // ===== HOME =====
 const sum=(rows,tipe,metode)=>rows.filter(r=>r.tipe===tipe&&(!metode||r.metode===metode)).reduce((a,r)=>a+r.nominal,0);
 function renderHome(){
   const {Cash:c,Digital:d}=saldo();
   countTo($('hCash'),c); countTo($('hDig'),d); countTo($('hTotal'),c+d);
 }
-
+ 
 // ===== NAVIGASI =====
 function go(p){
   show('main');
@@ -387,7 +387,7 @@ function go(p){
 }
 document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
 $('bBack').onclick=()=>{renderHome();show('home')};
-
+ 
 // ===== INPUT =====
 function toggle(sel,attr,key){
   document.querySelectorAll(sel).forEach(b=>b.onclick=()=>{
@@ -410,7 +410,7 @@ $('bSimpan').onclick=e=>busy(e.target,async()=>{
     await reload(); renderHome(); toast('Tersimpan');
   }catch(x){err('im',/Tipe tidak valid/.test(x.message)?'Server belum diperbarui. Tempel Code.gs terbaru lalu deploy versi baru.':x.message)}
 });
-
+ 
 // ===== STATISTIK =====
 const inMonth=(r,b)=>r.tanggal.slice(0,7)===b;
 function renderStat(){
@@ -433,7 +433,7 @@ function renderStat(){
   $('sIn').textContent=rp(sum(rows,'Pemasukan')); $('sOut').textContent=rp(sum(rows,'Pengeluaran'));
 }
 $('sBln').onchange=()=>{$('rBln').value=$('sBln').value;renderStat()};
-
+ 
 // ===== RIWAYAT =====
 function renderHist(){
   const b=$('rBln').value;
@@ -453,7 +453,7 @@ function renderHist(){
   });
 }
 $('rBln').onchange=()=>{$('sBln').value=$('rBln').value;renderHist()};
-
+ 
 // ===== PWA: pasang sebagai aplikasi =====
 let dp=null;
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;$('bPasang').hidden=false});
@@ -463,7 +463,7 @@ async function installApp(){
   if(dp){dp.prompt();await dp.userChoice;dp=null;$('bPasang').hidden=true;return}
   toast(/iphone|ipad|ipod/i.test(navigator.userAgent)?'Di iPhone: tekan tombol Bagikan, lalu Tambahkan ke Layar Utama.':'Buka menu browser, lalu pilih Instal aplikasi atau Tambahkan ke layar utama.');
 }
-
+ 
 // ===== SALDO & TUKAR =====
 function saldo(){
   const f=(t,m)=>sum(S.rows,t,m);
@@ -473,7 +473,7 @@ function saldo(){
   };
 }
 const kat=r=>r.tipe==='Tukar'?(r.metode==='Cash'?'Cash → Digital':'Digital → Cash'):r.metode;
-
+ 
 // ===== AKUN DEMO (data lokal, tidak masuk spreadsheet) =====
 const isApp=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
 $('dTxt').textContent='Anda memakai akun demo: data hanya contoh dan tidak tersimpan. '+(isApp?'Buat akun untuk menyimpan catatan keuangan Anda.':'Unduh aplikasi dan buat akun untuk menyimpan catatan keuangan Anda.');
@@ -504,7 +504,7 @@ $('bDemo').onclick=async()=>{
 $('dBuat').onclick=()=>{S.demo=false;S.rows=[];err('dm');show('daftar')};
 addEventListener('appinstalled',()=>{$('bPasang').hidden=true;toast('HematYuk terpasang')});
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
-
+ 
 // ===== INIT =====
 $('iTgl').value=today(); $('sBln').value=$('rBln').value=today().slice(0,7);
 (async()=>{
@@ -515,3 +515,4 @@ $('iTgl').value=today(); $('sBln').value=$('rBln').value=today().slice(0,7);
 </script>
 </body>
 </html>
+ 
