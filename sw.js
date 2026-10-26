@@ -1,4 +1,4 @@
-// HematYuk service worker: cache tampilan agar aplikasi cepat terbuka & tetap tampil saat offline.
+/// HematYuk service worker: cache tampilan agar aplikasi cepat terbuka & tetap tampil saat offline.
 // Data (Apps Script) tidak pernah di-cache supaya selalu terbaru.
 const V = 'hematyuk-v2';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
